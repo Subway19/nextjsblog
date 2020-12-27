@@ -8,10 +8,10 @@ import { useTheme } from "next-themes";
 export function Layout({ children }) {
   return (
     <div className="w-full min-h-screen dark:bg-gray-700 dark:text-white">
-      <div className="max-w-screen-sm px-4 py-12 mx-auto antialiased font-body">
+      <div className="max-w-screen-md px-4 py-12 mx-auto antialiased font-body">
         <Header />
         <main>{children}</main>
-        <footer className="text-lg font-light">
+        <footer className="text-base font-light">
           © {new Date().getFullYear()}, Built with{" "}
           <a href="https://nextjs.org/">Next.js</a>
           &#128293;
@@ -40,13 +40,14 @@ const Header = () => {
 
   return (
     <header
-      className={clsx("flex items-center justify-between ", {
+      className={clsx("flex  justify-between ", {
         "mb-8": isRoot,
         "mb-2": !isRoot,
       })}
     >
-      <div className={"max-w-md"}>
+      <div className={"flex flex-row  max-w-md"}>
         {isRoot ? <LargeTitle /> : <SmallTitle />}
+        {/* <Links /> */}
       </div>
       {mounted && (
         <DarkModeSwitch
@@ -60,23 +61,40 @@ const Header = () => {
 };
 
 const LargeTitle = () => (
-  <h1>
-    <Link href="/">
+  <h2>
+    <Link href="/"
+      style={{
+        margin: '20px'
+      }}
+    >
       <a
         className={clsx(
-          "text-3xl font-black leading-none text-black no-underline font-display",
-          "sm:text-5xl",
+          "text-2xl font-black leading-none text-black no-underline font-display",
           "dark:text-white"
         )}
       >
-        Next.Js Starter Blog
+        Home
       </a>
     </Link>
-  </h1>
+    <Link href="/about"
+       style={{
+        margin: '20px'
+      }}
+    >
+      <a
+        className={clsx(
+          "text-2xl font-black leading-none text-black no-underline font-display",
+          "dark:text-white"
+        )}
+      >
+        About
+      </a>
+    </Link>
+  </h2>
 );
 
 const SmallTitle = () => (
-  <h1>
+  <h2>
     <Link href="/">
       <a
         className={clsx(
@@ -84,8 +102,36 @@ const SmallTitle = () => (
           "dark:text-white"
         )}
       >
-        Next.Js Starter Blog
+        Sumant Bagade
       </a>
     </Link>
-  </h1>
+  </h2>
 );
+
+
+const Links = () => (
+  <div>
+  <Link
+      style={{
+        boxShadow: `none`,
+        textDecoration: `none`,
+        color: `inherit`,
+        margin: '0 20px'
+      }}
+      href={`/`}
+    >
+      Home
+  </Link>
+  <Link
+      style={{
+        boxShadow: `none`,
+        textDecoration: `none`,
+        color: `inherit`,
+        margin: '0 20px'
+      }}
+      href={`/about`}
+    >
+      About
+    </Link>
+</div>
+)
