@@ -20,11 +20,11 @@ export default function Home({ posts }) {
             <span className="text-sm">{date}</span>
           </h4>
           <section>
-            <p className="mb-8 text-lg">{description}</p>
+            <p className="mb-8 text-md">{description}</p>
           </section>
         </article>
       ))}
-      <Bio className="my-14" />
+      {/* <Bio className="my-14" /> */}
     </Layout>
   );
 }
