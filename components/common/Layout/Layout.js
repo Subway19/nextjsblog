@@ -12,9 +12,8 @@ export function Layout({ children }) {
         <Header />
         <main>{children}</main>
         <footer className="text-base font-light">
-          © {new Date().getFullYear()}, Built with{" "}
-          <a href="https://nextjs.org/">Next.js</a>
-          &#128293;
+          Built with{" "}<a href="https://nextjs.org/">Next.js</a>
+          {" "} &#169; Sumant Bagade, {new Date().getFullYear()}
         </footer>
       </div>
     </div>
