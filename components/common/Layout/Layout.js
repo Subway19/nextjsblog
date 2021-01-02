@@ -11,7 +11,7 @@ export function Layout({ children }) {
       <div className="max-w-screen-md px-4 py-12 mx-auto antialiased font-body">
         <Header />
         <main>{children}</main>
-        <footer className="text-base font-light">
+        <footer className="text-sm font-light">
           Built with{" "}<a href="https://nextjs.org/">Next.js</a>
           {" "} &#169; Sumant Bagade, {new Date().getFullYear()}
         </footer>
@@ -41,12 +41,11 @@ const Header = () => {
     <header
       className={clsx("flex  justify-between ", {
         "mb-8": isRoot,
-        "mb-2": !isRoot,
+        "mb-4": !isRoot,
       })}
     >
       <div className={"flex flex-row  max-w-md"}>
-        {isRoot ? <LargeTitle /> : <SmallTitle />}
-        {/* <Links /> */}
+        {isRoot ? <LargeTitle /> : <LargeTitle />}
       </div>
       {mounted && (
         <DarkModeSwitch
@@ -60,11 +59,8 @@ const Header = () => {
 };
 
 const LargeTitle = () => (
-  <h2>
+  <div>
     <Link href="/"
-      style={{
-        margin: '20px'
-      }}
     >
       <a
         className={clsx(
@@ -76,20 +72,17 @@ const LargeTitle = () => (
       </a>
     </Link>
     <Link href="/about"
-       style={{
-        margin: '20px'
-      }}
     >
       <a
         className={clsx(
-          "text-2xl font-black leading-none text-black no-underline font-display",
+          "text-2xl mx-4 font-black leading-none text-black no-underline font-display",
           "dark:text-white"
         )}
       >
         About
       </a>
     </Link>
-  </h2>
+  </div>
 );
 
 const SmallTitle = () => (
@@ -107,30 +100,3 @@ const SmallTitle = () => (
   </h2>
 );
 
-
-const Links = () => (
-  <div>
-  <Link
-      style={{
-        boxShadow: `none`,
-        textDecoration: `none`,
-        color: `inherit`,
-        margin: '0 20px'
-      }}
-      href={`/`}
-    >
-      Home
-  </Link>
-  <Link
-      style={{
-        boxShadow: `none`,
-        textDecoration: `none`,
-        color: `inherit`,
-        margin: '0 20px'
-      }}
-      href={`/about`}
-    >
-      About
-    </Link>
-</div>
-)
